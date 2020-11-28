@@ -5,7 +5,7 @@ const Home = ( { history } ) =>
 {
     return (
         <div>
-            <center>
+            <center id='home'>
             findyourcolor
             </center>
             <div id="btn_group">
