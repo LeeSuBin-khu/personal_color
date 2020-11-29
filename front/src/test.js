@@ -1,17 +1,5 @@
-//import React from 'react';
-
-/*const test = ( { history } ) =>
-{
-    return(
-    <div>
-        <h3>test </h3>
-    </div>
-    );
-}*/
-
 
 import React, { useState } from 'react';
-
 import './test.css';
 
 const Test = ( { history } ) =>
@@ -51,41 +39,47 @@ const Test = ( { history } ) =>
 	const [showScore, setShowScore] = useState(false);
     const [score_c, setScore_cool] = useState(0);
     const [score_w, setScore_warm] = useState(0);
-    var score = '';
+	const [score, setPersonal] = useState(0);
+	var isTrue = 0;
 
 	const handleAnswerOptionClick = (isCorrect) => {
 		if (isCorrect) {
-			setScore_cool(score_c + 1);
+			setScore_cool(score_c + 1); //c,c,w,w
         }
         else{
             setScore_warm(score_w + 1);
-        }
-        console.log(isCorrect);
-        console.log(score_c);
+		}
 
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < questions.length) {
-			setCurrentQuestion(nextQuestion);
-		} else {
+			setCurrentQuestion(nextQuestion); //0,0 -> 0,1 -> 1,2 -> 2,3
+		} else if(nextQuestion === questions.length){
+			if(score_c>score_w){
+				setPersonal('cool');
+			}
+			else if(score_c<score_w){
+				setPersonal('warm');
+			}
+			else{
+				setPersonal('restart');
+			}
+
+			isTrue = 1;
+		}
+
+		if(isTrue===1)
+		{
 			setShowScore(true);
-        }
-        
-        if(score_c>score_w){
-            score='cool';
-        }
-        else if(score_c<score_w){
-            score='warm';
-        }
-        else{
-            score='restart';
-        }
+		}
+
+       
 	};
 	return (
 		<div className='app'>
 			{showScore ? (
-				<div className='score-section'>
-					You scored {score} out of {questions.length}
-				</div>
+				<span className='score-section'>
+					You scored {currentQuestion}{questions.length}{score} out of {questions.length}
+				</span>
 			) : (
 				<>
 					<div className='question-section'>
