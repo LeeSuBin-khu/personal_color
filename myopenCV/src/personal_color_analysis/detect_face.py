@@ -15,8 +15,9 @@ class DetectFace:
 
         #face detection part
         self.img = cv2.imread(image)
-        #if self.img.shape[0]>500:
-        #    self.img = cv2.resize(self.img, dsize=(0,0), fx=0.8, fy=0.8)
+        
+        if self.img.shape[0]>500:
+            self.img = cv2.resize(self.img, dsize=(0,0), fx=0.8, fy=0.8)
 
         # init face parts
         self.right_eyebrow = []
@@ -32,7 +33,7 @@ class DetectFace:
 
     # return type : np.array
     def detect_face_part(self):
-        face_parts = [[],[],[],[],[],[],[]]
+        face_parts = [[],[],[],[],[],[], []]
         # detect faces in the grayscale image
         rect = self.detector(cv2.cvtColor(self.img, cv2.COLOR_BGR2GRAY), 1)[0]
 
