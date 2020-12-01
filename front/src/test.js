@@ -1,6 +1,6 @@
-
-import React, { useState } from 'react';
-import './test.css';
+import React, { useEffect,useState } from 'react'; //리액트 불러오기
+import console from 'react-console'; //리액트 콘솔_크롬으로 실행
+import './test.css';//test.css 불러오기
 
 const Test = ( { history } ) =>
  {
@@ -33,59 +33,134 @@ const Test = ( { history } ) =>
 				{ answerText: '아니오', isCorrect: false }
 			],
 		},
-	];
+	]; //웜,쿨 파악
 
-	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const [showScore, setShowScore] = useState(false);
-    const [score_c, setScore_cool] = useState(0);
-    const [score_w, setScore_warm] = useState(0);
-	const [score, setPersonal] = useState(0);
-	var isTrue = 0;
+	const questions_cool = [
+		{
+			questionText: '머리카락 색이 검정에 가깝다',
+			answerOptions: [
+				{ answerText: '예', isCorrect: true },
+				{ answerText: '아니오', isCorrect: false }
+			],
+		},
+		{
+			questionText: '피부에 붉은 기가 많다',
+			answerOptions: [
+				{ answerText: '예', isCorrect: true },
+				{ answerText: '아니오', isCorrect: false }
+			],
+		},
+		{
+			questionText: '손목 혈관 색이 초록색이다',
+			answerOptions: [
+				{ answerText: '예', isCorrect: false },
+				{ answerText: '아니오', isCorrect: true }
+			],
+		},
+		{
+			questionText: '햇볕에 장시간 있으면 피부가 붉어진다',
+			answerOptions: [
+				{ answerText: '예', isCorrect: true },
+				{ answerText: '아니오', isCorrect: false }
+			],
+		},
+	]; //여름쿨톤, 겨울쿨톤 파악
 
-	const handleAnswerOptionClick = (isCorrect) => {
+	const questions_warm = [
+		{
+			questionText: '머리카락 색이 검정에 가깝다',
+			answerOptions: [
+				{ answerText: '예', isCorrect: true },
+				{ answerText: '아니오', isCorrect: false }
+			],
+		},
+		{
+			questionText: '피부에 붉은 기가 많다',
+			answerOptions: [
+				{ answerText: '예', isCorrect: true },
+				{ answerText: '아니오', isCorrect: false }
+			],
+		},
+		{
+			questionText: '손목 혈관 색이 초록색이다',
+			answerOptions: [
+				{ answerText: '예', isCorrect: false },
+				{ answerText: '아니오', isCorrect: true }
+			],
+		},
+		{
+			questionText: '햇볕에 장시간 있으면 피부가 붉어진다',
+			answerOptions: [
+				{ answerText: '예', isCorrect: true },
+				{ answerText: '아니오', isCorrect: false }
+			],
+		},
+	]; //봄웜톤, 가을웜톤 파악
+
+
+	const [currentQuestion, setCurrentQuestion] = useState(0); //현재 문제 번호 [변수, 함수]
+	const [showScore, setShowScore] = useState(false); //결과 보여줄까?
+    const [score_c, setScore_cool] = useState(0); //쿨톤 점수 -> 웜,쿨 리스트에서 사용
+	const [score_w, setScore_warm] = useState(0); //웜톤 점수 -> 웜,쿨 리스트에서 사용
+	const [score_c_s, setScore_cool_summer] = useState(0);
+	const [score_c_w, setScore_cool_winter] = useState(0);
+	const [score_w_s, setScore_warm_spring] = useState(0);
+	const [score_w_a, setScore_warm_autumn] = useState(0);
+	const [score, setPersonal] = useState(""); //퍼스널컬러 결과
+	
+
+	const handleAnswerOptionClick = (isCorrect) => {  //main 함수 1_웜쿨 검사
 		if (isCorrect) {
-			setScore_cool(score_c + 1); //c,c,w,w
-			handlePersonalScore(score_c,score_w);
-        }
-        else{
-			setScore_warm(score_w + 1);
-			handlePersonalScore(score_c,score_w);
+			setScore_cool(score_c + 1);
+			setScore_cool_summer(score_c_s + 1);
+			console.log('c' + score_c);
 		}
+		else{
+			setScore_warm(score_w + 1);
+			setScore_cool_winter(score_c_w + 1);
+			console.log('w' + score_w);
+		} ///웜,쿨 if문으로 점수 올리기
 
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < questions.length) {
-			setCurrentQuestion(nextQuestion); //0,0 -> 0,1 -> 1,2 -> 2,3
-		} else if(nextQuestion === questions.length){
-			handlePersonalScore(score_c,score_w);
+			setCurrentQuestion(nextQuestion);
 		}
 		else{
-			isTrue = 1;
-	
-			if(isTrue===1)
-			{
-				setShowScore(true);
-			}
+			setShowScore(true); //questions 끝나면 점수 보여줄까? true -> className='score-section'
 		}
        
-	};
-	const handlePersonalScore = (score_c,score_w) => {
-		if(score_c>score_w){
-			setPersonal('cool');
-		}
-		else if(score_c<score_w){
-			setPersonal('warm');
-		}
-		else{
-			setPersonal('restart');
-		}
-	
+ }; //함수1 끝.
+
+ const handlePersonalScore = (score_c,score_w) =>{ //함수2_웜,쿨 점수로 결과 구하기
+	if(score_c>score_w){
+		setPersonal('cool');
 	}
+	else if(score_c<score_w){
+		setPersonal('warm');
+	}
+	else{
+		setPersonal('restart');
+	}
+}; //함수2 끝.
+
+const handlePersonalScore_cool = (score_c_s,score_c_w) =>{ //함수3_여쿨, 겨쿨 점수로 결과 구하기
+	if(score_c_s>score_c_w){
+		setPersonal('summer cool');
+	}
+	else if(score_c_s<score_c_w){
+		setPersonal('winter cool');
+	}
+	else{
+		setPersonal('restart');
+	}
+}; //함수3 끝.
 
 	return (
 		<div className='app'>
-			{showScore ? (
+			{showScore ? ( 
 				<span className='score-section'>
-					You scored {score_c}{score_w}{score} out of {questions.length}
+					You scored {score} out of {questions.length}
+					<button onClick={() => handlePersonalScore(score_c,score_w)}>result</button>
 				</span>
 			) : (
 				<>
