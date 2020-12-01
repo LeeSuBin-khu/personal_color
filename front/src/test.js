@@ -45,40 +45,47 @@ const Test = ( { history } ) =>
 	const handleAnswerOptionClick = (isCorrect) => {
 		if (isCorrect) {
 			setScore_cool(score_c + 1); //c,c,w,w
+			handlePersonalScore(score_c,score_w);
         }
         else{
-            setScore_warm(score_w + 1);
+			setScore_warm(score_w + 1);
+			handlePersonalScore(score_c,score_w);
 		}
 
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < questions.length) {
 			setCurrentQuestion(nextQuestion); //0,0 -> 0,1 -> 1,2 -> 2,3
 		} else if(nextQuestion === questions.length){
-			if(score_c>score_w){
-				setPersonal('cool');
-			}
-			else if(score_c<score_w){
-				setPersonal('warm');
-			}
-			else{
-				setPersonal('restart');
-			}
-
+			handlePersonalScore(score_c,score_w);
+		}
+		else{
 			isTrue = 1;
+	
+			if(isTrue===1)
+			{
+				setShowScore(true);
+			}
 		}
-
-		if(isTrue===1)
-		{
-			setShowScore(true);
-		}
-
        
 	};
+	const handlePersonalScore = (score_c,score_w) => {
+		if(score_c>score_w){
+			setPersonal('cool');
+		}
+		else if(score_c<score_w){
+			setPersonal('warm');
+		}
+		else{
+			setPersonal('restart');
+		}
+	
+	}
+
 	return (
 		<div className='app'>
 			{showScore ? (
 				<span className='score-section'>
-					You scored {currentQuestion}{questions.length}{score} out of {questions.length}
+					You scored {score_c}{score_w}{score} out of {questions.length}
 				</span>
 			) : (
 				<>
