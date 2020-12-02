@@ -79,7 +79,8 @@ const handlePersonalScore_warm = (score_w_s,score_w_a) =>{ //함수3_여쿨, 겨
 				<span className='score-section'>
 					You scored {score} out of {questions_warm.length}
 					<button onClick={() => handlePersonalScore_warm(score_w_s,score_w_a)}>result</button>
-					{score === "cool" ? <button onClick={ () => {history.push("/test2")}}>next</button>
+					{score === "spring warm" ? <ImageBackground source={require("./season/spring.jpg")} style={{width:"100%",height:"100%"}}>
+					</ImageBackground>
 					: <button onClick={ () => {history.push("/test3")}}>next</button>}
 				</span>
 			) : (
