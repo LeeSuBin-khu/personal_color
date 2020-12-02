@@ -1,10 +1,10 @@
-import React, { useEffect,useState } from 'react'; //리액트 불러오기
+import React, { useState } from 'react'; //리액트 불러오기
 import console from 'react-console'; //리액트 콘솔_크롬으로 실행
 import './test.css';//test.css 불러오기
 
-const Test = ( { history } ) =>
+const Test2 = ( { history } ) =>
  {
-	const questions = [
+	const questions_cool = [
 		{
 			questionText: '머리카락 색이 검정에 가깝다',
 			answerOptions: [
@@ -33,27 +33,25 @@ const Test = ( { history } ) =>
 				{ answerText: '아니오', isCorrect: false }
 			],
 		},
-	]; //웜,쿨 파악
+	]; //여름쿨톤, 겨울쿨톤 파악
 
-	const [currentQuestion, setCurrentQuestion] = useState(0); //현재 문제 번호 [변수, 함수]
-	const [showScore, setShowScore] = useState(false); //결과 보여줄까?
-    const [score_c, setScore_cool] = useState(0); //쿨톤 점수 -> 웜,쿨 리스트에서 사용
-	const [score_w, setScore_warm] = useState(0); //웜톤 점수 -> 웜,쿨 리스트에서 사용
+	const [currentQuestion_c, setCurrentQuestion] = useState(0); //현재 문제 번호 [변수, 함수]
+	const [showScore_c, setShowScore] = useState(false); //결과 보여줄까?
+	const [score_c_s, setScore_cool_summer] = useState(0);
+	const [score_c_w, setScore_cool_winter] = useState(0);
 	const [score, setPersonal] = useState(""); //퍼스널컬러 결과
 	
 
-	const handleAnswerOptionClick = (isCorrect) => {  //main 함수 1_웜쿨 검사
+	const handleAnswerOptionClick = (isCorrect) => {  
 		if (isCorrect) {
-			setScore_cool(score_c + 1);
-			console.log('c' + score_c);
+			setScore_cool_summer(score_c_s + 1);
 		}
 		else{
-			setScore_warm(score_w + 1);
-			console.log('w' + score_w);
-		} ///웜,쿨 if문으로 점수 올리기
+			setScore_cool_winter(score_c_w + 1);
+		} 
 
-		const nextQuestion = currentQuestion + 1;
-		if (nextQuestion < questions.length) {
+		const nextQuestion = currentQuestion_c + 1;
+		if (nextQuestion < questions_cool.length) {
 			setCurrentQuestion(nextQuestion);
 		}
 		else{
@@ -62,24 +60,24 @@ const Test = ( { history } ) =>
        
  }; //함수1 끝.
 
- const handlePersonalScore = (score_c,score_w) =>{ //함수2_웜,쿨 점수로 결과 구하기
-	if(score_c>score_w){
-		setPersonal('cool');
+const handlePersonalScore_cool = (score_c_s,score_c_w) =>{ //함수3_여쿨, 겨쿨 점수로 결과 구하기
+	if(score_c_s>score_c_w){
+		setPersonal('summer cool');
 	}
-	else if(score_c<score_w){
-		setPersonal('warm');
+	else if(score_c_s<score_c_w){
+		setPersonal('winter cool');
 	}
 	else{
 		setPersonal('restart');
 	}
-}; //함수2 끝.
+}; //함수3 끝.
 
 	return (
 		<div className='app'>
-			{showScore ? ( 
+			{showScore_c ? ( 
 				<span className='score-section'>
-					You scored {score} out of {questions.length}
-					<button onClick={() => handlePersonalScore(score_c,score_w)}>result</button>
+					You scored {score} out of {questions_cool.length}
+					<button onClick={() => handlePersonalScore_cool(score_c_s,score_c_w)}>result</button>
 					{score === "cool" ? <button onClick={ () => {history.push("/test2")}}>next</button>
 					: <button onClick={ () => {history.push("/test3")}}>next</button>}
 				</span>
@@ -87,12 +85,12 @@ const Test = ( { history } ) =>
 				<>
 					<div className='question-section'>
 						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{questions.length}
+							<span>Question {currentQuestion_c + 1}</span>/{questions_cool.length}
 						</div>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div>
+						<div className='question-text'>{questions_cool[currentQuestion_c].questionText}</div>
 					</div>
 					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOption) => (
+						{questions_cool[currentQuestion_c].answerOptions.map((answerOption) => (
 							<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
 						))}
 					</div>
@@ -103,4 +101,4 @@ const Test = ( { history } ) =>
 }
 
 
-export default Test;
+export default Test2;
