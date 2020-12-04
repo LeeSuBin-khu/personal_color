@@ -1,11 +1,24 @@
-body 
+body
         {
             background-image : url('main.png');
             background-repeat : no-repeat;
             background-size : cover;
-            font-family: "button";
-            font-size: 50px;
             color:rgb(230, 255, 255);
+            
+        }
+        #question-count
+        {
+            font-size: 50px;
+        }
+        #question-text
+        {
+            font-size: 70px;
+        }
+        #test
+        {
+            text-align: center!important;
+            line-height: 100px;
+            font-family: "Q";
         }
         @font-face 
         {
@@ -17,4 +30,20 @@ body
             font-family: "button";
             src: url("Monday Monkey.ttf");
         }
-        
+        @font-face 
+        {
+            font-family: "Q";
+            src: url("po.ttf");
+        }
+        #btn_answer
+        {
+            border: 1px;
+            color:rgb(255, 255, 255);
+            padding: 10px;
+            align-items: center;
+            text-align: center; 
+            font-size: 40px;
+            background-color: rgba(255, 255, 255, 0);
+            font-family: "Q";
+            top: 30px;
+        }
