@@ -4,7 +4,7 @@ import './Home.css';
 const Home = ( { history } ) => 
 {
     return (
-        <div>
+        <div className='home_display'>
             <center id='home'>
             findyourcolor
             </center>

@@ -19,7 +19,7 @@ class App extends Component {
           <Route path="/test" exact component={Test} />
           <Route path="/test2" exact component={Test2} />    
           <Route path="/test3" exact component={Test3} />
-          <Route path="/spring?ver=<%=version%>" exact component={Spring} />
+          <Route path="/spring" exact component={Spring} />
           <Route path="/summer?ver=0" exact component={Summer} />
           <Route path="/autumn?ver=0" exact component={Autumn} />
           <Route path="/winter?ver=0" exact component={Winter} />
