@@ -75,7 +75,7 @@ const Test = ( { history } ) =>
 }; //함수2 끝.
 
 	return (
-		<div className='app'>
+		<div className='test'>
 			{showScore ? ( 
 				<span className='score-section'>
 					You scored {score} out of {questions.length}
