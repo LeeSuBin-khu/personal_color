@@ -1,10 +1,18 @@
-
-        #spring
+       body 
+       {
+           background-image : url('./main.png');
+           background-repeat : no-repeat;
+           background-size : cover;
+       }
+       #spring_class
         {
-            background-image : url('./season/spring.jpg');
-            background-repeat : no-repeat;
-            background-size : cover;
-           
+            text-align: center;
+        }
+        .img
+        {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
         }
         @font-face 
         {
@@ -18,27 +26,7 @@
         }
         #back_btn
         {
-            border-top-left-radius: 5px;
-            border-bottom-left-radius: 5px;
-            border-top-right-radius: 5px;
-            border-bottom-right-radius: 5px;
-            font-family: "button";
-            position: relative;
-            top: -50px;
-            left: 550px;
         }
         #btn_back
         {
-            border: 1px;
-            color:rgb(255, 255, 255);
-            padding: 30px;
-            align-items: center;
-            text-align: center; 
-            font-size: 40px;
-            background-color: rgba(255,255,255,0.5);
-            
-        }
-        #btn_back:hover
-        {
-            background-color: rgb(167, 255, 246);
         }
