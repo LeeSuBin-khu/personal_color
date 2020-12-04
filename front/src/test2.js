@@ -42,7 +42,7 @@ const Test2 = ( { history } ) =>
 	const [score, setPersonal] = useState(""); //퍼스널컬러 결과
 	
 
-	const handleAnswerOptionClick = (isCorrect) => {  
+	const handleAnswerOptionClick = (isCorrect) => {  //함수3_여쿨, 겨쿨 점수 +1
 		if (isCorrect) {
 			setScore_cool_summer(score_c_s + 1);
 		}
@@ -60,7 +60,7 @@ const Test2 = ( { history } ) =>
        
  }; //함수1 끝.
 
-const handlePersonalScore_cool = (score_c_s,score_c_w) =>{ //함수3_여쿨, 겨쿨 점수로 결과 구하기
+const handlePersonalScore_cool = (score_c_s,score_c_w) =>{ //함수2_여쿨, 겨쿨 점수로 결과 구하기
 	if(score_c_s>score_c_w){
 		setPersonal('summer cool');
 	}
@@ -70,7 +70,7 @@ const handlePersonalScore_cool = (score_c_s,score_c_w) =>{ //함수3_여쿨, 겨
 	else{
 		setPersonal('restart');
 	}
-}; //함수3 끝.
+}; //함수2 끝.
 
 	return (
 		<div className='app'>
@@ -78,8 +78,8 @@ const handlePersonalScore_cool = (score_c_s,score_c_w) =>{ //함수3_여쿨, 겨
 				<span className='score-section'>
 					You scored {score} out of {questions_cool.length}
 					<button onClick={() => handlePersonalScore_cool(score_c_s,score_c_w)}>result</button>
-					{score === "cool" ? <button onClick={ () => {history.push("/test2")}}>next</button>
-					: <button onClick={ () => {history.push("/test3")}}>next</button>}
+					{score === "summer cool" ? <button onClick={ () => {history.push("/summer")}}>next</button>
+					: <button onClick={ () => {history.push("/winter")}}>next</button>}
 				</span>
 			) : (
 				<>

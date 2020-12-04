@@ -43,13 +43,13 @@ const Test3 = ( { history } ) =>
 	const [score, setPersonal] = useState(""); //퍼스널컬러 결과
 	
 
-	const handleAnswerOptionClick = (isCorrect) => {  //main 함수 1_웜쿨 검사
+	const handleAnswerOptionClick = (isCorrect) => {  //main 함수 1_봄, 가을 검사
 		if (isCorrect) {
 			setScore_warm_spring(score_w_s+1);
 		}
 		else{
 			setScore_warm_autumn(score_w_a+1);
-		} ///웜,쿨 if문으로 점수 올리기
+		} ///봄, 가을 if문으로 점수 올리기
 
 		const nextQuestion = currentQuestion_w + 1;
 		if (nextQuestion < questions_warm.length) {
@@ -61,7 +61,7 @@ const Test3 = ( { history } ) =>
        
  }; //함수1 끝.
 
-const handlePersonalScore_warm = (score_w_s,score_w_a) =>{ //함수3_여쿨, 겨쿨 점수로 결과 구하기
+const handlePersonalScore_warm = (score_w_s,score_w_a) =>{ //함수2_봄, 가을 점수로 결과 구하기
 	if(score_w_s>score_w_a){
 		setPersonal('spring warm');
 	}
@@ -71,7 +71,7 @@ const handlePersonalScore_warm = (score_w_s,score_w_a) =>{ //함수3_여쿨, 겨
 	else{
 		setPersonal('restart');
 	}
-}; //함수3 끝.
+}; //함수2 끝.
 
 	return (
 		<div className='app'>

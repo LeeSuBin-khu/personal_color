@@ -1,0 +1,17 @@
+import React from 'react';
+import './spring.css?ver=1.4';
+import winter from './season/winter.png';
+
+const Winter = ( { history } ) => 
+{
+    return (
+        <div className='winter_class'>
+            <img src = {winter} width='1300' height='600' alt = "winter"/>
+            <div id="btn_back">
+            <button id="back_btn" onClick={ () => {history.push("/")}}>back</button>
+            </div>
+        </div>
+    );
+}
+
+export default Winter;
