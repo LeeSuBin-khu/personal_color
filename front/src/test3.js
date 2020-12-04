@@ -74,10 +74,9 @@ const handlePersonalScore_warm = (score_w_s,score_w_a) =>{ //함수2_봄, 가을
 }; //함수2 끝.
 
 	return (
-		<div className='app'>
+		<div id='test'>
 			{showScore_w ? ( 
 				<span className='score-section'>
-					You scored {score} out of {questions_warm.length}
 					<button onClick={() => handlePersonalScore_warm(score_w_s,score_w_a)}>result</button>
 					{score === "spring warm" ? <button onClick={ () => {history.push("/spring")}}>next</button>
 					: <button onClick={ () => {history.push("/autumn")}}>next</button>}
@@ -85,14 +84,14 @@ const handlePersonalScore_warm = (score_w_s,score_w_a) =>{ //함수2_봄, 가을
 			) : (
 				<>
 					<div className='question-section'>
-						<div className='question-count'>
+						<div id='question-count'>
 							<span>Question {currentQuestion_w + 1}</span>/{questions_warm.length}
 						</div>
-						<div className='question-text'>{questions_warm[currentQuestion_w].questionText}</div>
+						<div id="question-text">{questions_warm[currentQuestion_w].questionText}</div>
 					</div>
 					<div className='answer-section'>
 						{questions_warm[currentQuestion_w].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+							<button id = "btn_answer" onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
 						))}
 					</div>
 				</>

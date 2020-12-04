@@ -1,6 +1,6 @@
 import React, { useState } from 'react'; //리액트 불러오기
 import console from 'react-console'; //리액트 콘솔_크롬으로 실행
-import './test.css';//test.css 불러오기
+import './test.css?v=1.0';//test.css 불러오기
 
 const Test2 = ( { history } ) =>
  {
@@ -73,10 +73,9 @@ const handlePersonalScore_cool = (score_c_s,score_c_w) =>{ //함수2_여쿨, 겨
 }; //함수2 끝.
 
 	return (
-		<div className='app'>
+		<div id='test'>
 			{showScore_c ? ( 
 				<span className='score-section'>
-					You scored {score} out of {questions_cool.length}
 					<button onClick={() => handlePersonalScore_cool(score_c_s,score_c_w)}>result</button>
 					{score === "summer cool" ? <button onClick={ () => {history.push("/summer")}}>next</button>
 					: <button onClick={ () => {history.push("/winter")}}>next</button>}
@@ -84,14 +83,14 @@ const handlePersonalScore_cool = (score_c_s,score_c_w) =>{ //함수2_여쿨, 겨
 			) : (
 				<>
 					<div className='question-section'>
-						<div className='question-count'>
+						<div id='question-count'>
 							<span>Question {currentQuestion_c + 1}</span>/{questions_cool.length}
 						</div>
-						<div className='question-text'>{questions_cool[currentQuestion_c].questionText}</div>
+						<div id="question-text">{questions_cool[currentQuestion_c].questionText}</div>
 					</div>
 					<div className='answer-section'>
 						{questions_cool[currentQuestion_c].answerOptions.map((answerOption) => (
-							<button onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
+							<button id = "btn_answer" onClick={() => handleAnswerOptionClick(answerOption.isCorrect)}>{answerOption.answerText}</button>
 						))}
 					</div>
 				</>
