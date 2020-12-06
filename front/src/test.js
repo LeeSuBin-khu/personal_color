@@ -6,10 +6,10 @@ const Test = ( { history } ) =>
  {
 	const questions = [
 		{
-			questionText: '머리카락 색이 검정에 가깝다',
+			questionText: '머리카락이 어떤 색에 가깝나요?',
 			answerOptions: [
-				{ answerText: '예', isCorrect: true },
-				{ answerText: '아니오', isCorrect: false }
+				{ answerText: '검은색', isCorrect: true },
+				{ answerText: '갈색', isCorrect: false }
 			],
 		},
 		{
@@ -20,24 +20,66 @@ const Test = ( { history } ) =>
 			],
 		},
 		{
-			questionText: '손목 혈관 색이 초록색이다',
+			questionText: '손목 혈관 색이 파란색보다는 초록색이다',
 			answerOptions: [
 				{ answerText: '예', isCorrect: false },
 				{ answerText: '아니오', isCorrect: true }
 			],
 		},
 		{
-			questionText: '햇볕에 장시간 있으면 피부가 붉어진다',
+			questionText: '햇볕에 장시간 있으면 피부가...',
+			answerOptions: [
+				{ answerText: '붉어진다', isCorrect: true },
+				{ answerText: '검게 그을린다', isCorrect: false }
+			],
+		},
+		{
+			questionText: '순백 셔츠보다 아이보리색이 더 어울리나요?',
+			answerOptions: [
+				{ answerText: '예', isCorrect: false },
+				{ answerText: '아니오', isCorrect: true }
+			],
+		},
+		{
+			questionText: '나는 OO색의 악세사리가 어울린다',
+			answerOptions: [
+				{ answerText: '골드', isCorrect: false },
+				{ answerText: '실버', isCorrect: true }
+			],
+		},
+		{
+			questionText: '눈동자가 어떤 색에 가깝나요?',
+			answerOptions: [
+				{ answerText: '갈색', isCorrect: false },
+				{ answerText: '검은색', isCorrect: true }
+			],
+		},
+		{
+			questionText: '맨 얼굴로 검은색 옷을 입으면...',
+			answerOptions: [
+				{ answerText: '칙칙해보인다', isCorrect: false },
+				{ answerText: '이목구비가 뚜렷해보인다', isCorrect: true }
+			],
+		},
+		{
+			questionText: '얼굴이 창백해보인다는 소리를 자주 듣나요?',
 			answerOptions: [
 				{ answerText: '예', isCorrect: true },
 				{ answerText: '아니오', isCorrect: false }
 			],
 		},
 		{
-			questionText: '순백 셔츠보다 아이보리색이 더 어울린다',
+			questionText: '손가락을 지그시 눌러 피가 몰려있을 때...',
 			answerOptions: [
-				{ answerText: '예', isCorrect: false },
-				{ answerText: '아니오', isCorrect: true }
+				{ answerText: '탁한 빨간색이다', isCorrect: false },
+				{ answerText: '분홍색이다', isCorrect: true }
+			],
+		},
+		{
+			questionText: '주변에서 나의 첫 인상은...',
+			answerOptions: [
+				{ answerText: '차가운 분위기가 난다', isCorrect: true },
+				{ answerText: '따뜻한 분위기가 난다', isCorrect: false }
 			],
 		},
 	]; //웜,쿨 파악

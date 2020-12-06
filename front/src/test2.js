@@ -6,28 +6,35 @@ const Test2 = ( { history } ) =>
  {
 	const questions_cool = [
 		{
-			questionText: '머리카락 색이 검정에 가깝다',
-			answerOptions: [
-				{ answerText: '예', isCorrect: true },
-				{ answerText: '아니오', isCorrect: false }
-			],
-		},
-		{
-			questionText: '피부에 붉은 기가 많다',
-			answerOptions: [
-				{ answerText: '예', isCorrect: true },
-				{ answerText: '아니오', isCorrect: false }
-			],
-		},
-		{
-			questionText: '손목 혈관 색이 초록색이다',
+			questionText: '파스텔 같이 은은한 색상보다 쨍한 색이 어울린다',
 			answerOptions: [
 				{ answerText: '예', isCorrect: false },
 				{ answerText: '아니오', isCorrect: true }
 			],
 		},
 		{
-			questionText: '햇볕에 장시간 있으면 피부가 붉어진다',
+			questionText: '주변으로 부터 많이 듣는 나의 이미지는?',
+			answerOptions: [
+				{ answerText: '부드럽고, 맑은 느낌', isCorrect: true },
+				{ answerText: '카리스마, 도시적인 느낌', isCorrect: false }
+			],
+		},
+		{
+			questionText: '전체적으로 강한 대비를 이루는 색상이 잘어울린다',
+			answerOptions: [
+				{ answerText: '예', isCorrect: false },
+				{ answerText: '아니오', isCorrect: true }
+			],
+		},
+		{
+			questionText: '또렷하고, 선명한 색상이 잘어울린다',
+			answerOptions: [
+				{ answerText: '예', isCorrect: false },
+				{ answerText: '아니오', isCorrect: true }
+			],
+		},
+		{
+			questionText: '회색기가 섞인 톤이 잘어울린다',
 			answerOptions: [
 				{ answerText: '예', isCorrect: true },
 				{ answerText: '아니오', isCorrect: false }
