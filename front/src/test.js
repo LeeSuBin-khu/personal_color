@@ -33,6 +33,13 @@ const Test = ( { history } ) =>
 				{ answerText: '아니오', isCorrect: false }
 			],
 		},
+		{
+			questionText: '순백 셔츠보다 아이보리색이 더 어울린다',
+			answerOptions: [
+				{ answerText: '예', isCorrect: false },
+				{ answerText: '아니오', isCorrect: true }
+			],
+		},
 	]; //웜,쿨 파악
 
 	const [currentQuestion, setCurrentQuestion] = useState(0); //현재 문제 번호 [변수, 함수]
